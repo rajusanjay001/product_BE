@@ -1,5 +1,6 @@
 package com.product.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.product.service.ProductService;
 
 @RestController
-@RequestMapping(value = "/product")
+@RequestMapping("/product")
 public class ProductController {
 
 	@Autowired
-	protected ProductService productSetrvice;
+	private ProductService productSetrvice;
 
 	@GetMapping
 	public Map<String, Object> getProductDetails() {
-		return null;
+		productSetrvice.getProduct("BB5476");
+		return new HashMap<>();
 	}
 }

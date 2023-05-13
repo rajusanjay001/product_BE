@@ -1,0 +1,1 @@
+INSERT INTO review(productId,numberOfReviews,averageReviewScore)VALUES('addidas11',1,11.9);
