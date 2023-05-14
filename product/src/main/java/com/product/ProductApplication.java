@@ -21,7 +21,7 @@ public class ProductApplication {
 
 	    return restTemplateBuilder
 	            .setConnectTimeout(Duration.ofSeconds(10))
-	            .setReadTimeout(Duration.ofSeconds(100))
+	            .setReadTimeout(Duration.ofSeconds(30))
 	            .build();
 	}
 }
