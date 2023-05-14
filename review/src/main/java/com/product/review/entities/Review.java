@@ -1,10 +1,10 @@
 package com.product.review.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -14,8 +14,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Review {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer reviewId;
 	String productId;
 	Float averageReviewScore;
 	Integer numberOfReviews;
