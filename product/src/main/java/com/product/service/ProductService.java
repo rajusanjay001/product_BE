@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface ProductService {
 
-	Map<String, Object> getProduct(String productId);
+	Map<String, Object>getProduct(String productId);
 
 }

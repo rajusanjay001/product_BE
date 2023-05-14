@@ -1,6 +1,7 @@
 package com.product.service.impl;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import com.product.service.ProductService;
@@ -34,23 +35,35 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Map<String, Object> getProduct(String productId) {
-		getReview(productId);
-//		String productDetailUrl = "https://www.adidas.co.uk/api/products";
-//		try {
-//			URI uri = new URI(productDetailUrl + "/" + productId);
-//
-//			HttpHeaders headers = new HttpHeaders();
-//			headers.setContentType(MediaType.APPLICATION_JSON);
-//			RequestEntity requestEntity = new RequestEntity("", headers, HttpMethod.GET,
-//					URI.create("https://api.publicapis.org/entries"));
-//
-//			ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
-//			responseEntity.getBody();
-//		} catch (Exception e) {
-//
-//		}
+		Map<String, Object> body = new HashMap<>();
+		Map<String, Object> data = new HashMap<>();
+		
+		try {
+			URI uri = new URI(productDetailUrl + "/" + productId);
 
-		return new HashMap<>();
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RequestEntity requestEntity = new RequestEntity("", headers, HttpMethod.GET, uri);
+
+			ResponseEntity<Map> responseEntity = restTemplate.exchange(requestEntity, Map.class);
+			body = responseEntity.getBody();
+			
+		} catch (ResourceAccessException e) {
+			body.put("message", "there was a time out for getting the product details");
+			logger.error("Exception in getting details for the product", e);
+		} catch (URISyntaxException e) {
+			body.put("message", "issue in getting product details");
+			logger.error("Exception in getting details for the product", e);
+		}
+		Map<String, Object> review = getReview(productId);
+		String status = !review.isEmpty() && review.containsKey("status") && null != review.get("status")
+				? review.get("status").toString()
+				: "failed";
+		if (status.equalsIgnoreCase("success")) {
+			data = (Map<String, Object>) review.get("data");
+		}
+		body.put("review", data);
+		return body;
 	}
 
 	public Map<String, Object> getReview(String productId) {
