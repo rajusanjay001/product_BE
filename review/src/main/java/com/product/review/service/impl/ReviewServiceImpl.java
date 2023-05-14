@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.product.review.dto.ReviewDto;
 import com.product.review.entities.Review;
+import com.product.review.exception.handler.ReviewNotFoundException;
 import com.product.review.repository.ReviewRepo;
 import com.product.review.service.ReviewService;
 
@@ -22,22 +24,18 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewRepo reviewDao;
 
 	@Override
-	public ResponseEntity<Map<String, Object>> addReview(Map<String, Object> review) {
+	public ResponseEntity<Map<String, Object>> addReview(ReviewDto review) {
 		Map<String, Object> response = new HashMap<>();
-		if (!validateRequest(review)) {
-			response.put("status", "failed");
-			response.put("responseMessage", "Please check the request body");
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
-		}
+
 		Review insertEntity = new Review();
 //		Review responseEntity = new Review();
-		insertEntity.setNumberOfReviews(Integer.parseInt(review.get("numberOfReviews").toString()));
-		String productId = review.get("productId").toString();
+		insertEntity.setNumberOfReviews(review.getNumberOfReviews());
+		String productId = review.getProductId();
 		Review IsProductAvailable = reviewDao.findByProductId(productId);
 
 		if (null == IsProductAvailable) {
 			insertEntity.setProductId(productId);
-			insertEntity.setAverageReviewScore(Float.parseFloat(review.get("averageReviewScore").toString()));
+			insertEntity.setAverageReviewScore(review.getAverageReviewScore());
 			reviewDao.save(insertEntity);
 			response.put("status", "success");
 			response.put("responseMessage", "Review added successfully");
@@ -51,7 +49,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ResponseEntity<Map<String, Object>> getReviews(String productId) {
+	public ResponseEntity<Map<String, Object>> getReviews(String productId) throws ReviewNotFoundException{
 
 		if (productId.isEmpty()) {
 
@@ -77,22 +75,18 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ResponseEntity<Map<String, Object>> updateReview(Map<String, Object> review) {
+	public ResponseEntity<Map<String, Object>> updateReview(ReviewDto review) throws ReviewNotFoundException{
 		Map<String, Object> response = new HashMap<>();
-		if (!validateRequest(review)) {
-			response.put("status", "failed");
-			response.put("responseMessage", "Please check the request body");
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
-		}
+
 		Review ob = new Review();
-		ob.setNumberOfReviews(Integer.parseInt(review.get("numberOfReviews").toString()));
-		String productId = review.get("productId").toString();
+
+		String productId = review.getProductId();
 
 		Review IsProductAvailable = reviewDao.findByProductId(productId);
 		if (null != IsProductAvailable) {
+			ob.setNumberOfReviews(review.getNumberOfReviews());
 			ob.setProductId(productId);
-			ob.setAverageReviewScore(Float.parseFloat(review.get("averageReviewScore").toString()));
-//			ob.setReviewId(Integer.parseInt(review.get("productId").toString()));
+			ob.setAverageReviewScore(review.getAverageReviewScore());
 			reviewDao.save(ob);
 			response.put("status", "success");
 			response.put("responseMessage", "Updated Successfully");
@@ -100,28 +94,28 @@ public class ReviewServiceImpl implements ReviewService {
 		} else {
 			response.put("status", "failed");
 			response.put("responseMessage", "Review detail is not present for the product");
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 
 	}
 
-	public Boolean validateRequest(Map<String, Object> review) {
-		String productId = review.get("productId").toString();
-		if (productId.isEmpty())
-			return false;
-		try {
-			Integer.parseInt(review.get("numberOfReviews").toString());
-			Float.parseFloat(review.get("averageReviewScore").toString());
-		} catch (Exception e) {
-			return false;
-		}
-
-		return true;
-	}
+//	public Boolean validateRequest(Map<String, Object> review) {
+//		String productId = review.get("productId").toString();
+//		if (productId.isEmpty())
+//			return false;
+//		try {
+//			Integer.parseInt(review.get("numberOfReviews").toString());
+//			Float.parseFloat(review.get("averageReviewScore").toString());
+//		} catch (Exception e) {
+//			return false;
+//		}
+//
+//		return true;
+//	}
 
 	@Transactional
 	@Override
-	public ResponseEntity<Map<String, Object>> deleteReview(String productId) {
+	public ResponseEntity<Map<String, Object>> deleteReview(String productId)throws ReviewNotFoundException {
 		Review IsProductAvailable = reviewDao.findByProductId(productId);
 		if (null != IsProductAvailable) {
 			reviewDao.deleteByProductId(productId);
