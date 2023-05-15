@@ -1,0 +1,6 @@
+version: '1.0'
+services:
+  review:
+    image: rajusanjay001/review_microservice
+    ports:
+      - 8090:8090
