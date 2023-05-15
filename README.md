@@ -2,6 +2,7 @@
 
 # To convert the project to gradel ,go to location in project which contains pom.xml and run gradle init 
 
+
 1)Product and related microservice
 
   The docker image for the product service can be found here :https://hub.docker.com/r/rajusanjay001/product_microservice
@@ -13,6 +14,8 @@
 2) The docker image for the review service can be found here : https://hub.docker.com/r/rajusanjay001/review_microservice
 
   Product service runs on port **8090**
+  
+ **I have used in memory H2 for databas and added scripts in data.sql for prepopulating the reviews for few of the products  and added 2 users for authentication using @PostConstruct since it is a POC** 
 
   For the authente api to get the jwt token  use the below credentials
 
