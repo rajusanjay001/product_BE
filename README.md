@@ -3,6 +3,17 @@
 # To convert the project to gradel ,go to location in project which contains pom.xml and run gradle init 
 
 
+**Docker files are present in the docker folder**
+
+1)For Review services
+
+docker-compose -f review-compose.yml up
+
+2)For Product Services
+
+docker-compose -f product-compose.yml up
+
+
 Product and related microservice
 
  1)The docker image for the product service can be found here :https://hub.docker.com/r/rajusanjay001/product_microservice
@@ -31,13 +42,3 @@ Product and related microservice
   
   product.detail.url=https://www.adidas.co.uk/api/products
 
-
-**Docker files are present in the docker folder**
-
-1)For Review services
-
-docker-compose -f review-compose.yml up
-
-2)For Product Services
-
-docker-compose -f product-compose.yml up
