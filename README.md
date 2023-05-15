@@ -15,7 +15,7 @@
 
   Product service runs on port **8090**
   
- **I have used in memory H2 for databas and added scripts in data.sql for prepopulating the reviews for few of the products  and added 2 users for authentication using @PostConstruct since it is a POC** 
+ **I have used in memory H2 for database and added scripts in data.sql for prepopulating the reviews for few of the products  and added 2 users for authentication using @PostConstruct since it is a POC** 
 
   For the authente api to get the jwt token  use the below credentials
 
