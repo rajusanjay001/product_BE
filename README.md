@@ -26,4 +26,7 @@ Product and related microservice
   **I have used the public api that was given but the API does not respond .I have given a timeout for the first api call in product service and printed the review for the product if it times out**
   
   if there is a alternative api for the product service please change the property 
-   product.detail.url=https://www.adidas.co.uk/api/products
+  
+  **product.detail.url**
+  
+  product.detail.url=https://www.adidas.co.uk/api/products
