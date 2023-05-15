@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "60ae1bf5-dfd5-40bd-a583-41ac0fc0b371",
+		"name": "Product",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GETReview",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/review/M20324",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"review",
+						"M20324"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getJwtToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userName\": \"raju\",\n\"password\": \"password\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addNewReview",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWp1IiwiZXhwIjoxNjg0MTE3NjE3LCJpYXQiOjE2ODQwODE2MTd9.BpmAd09mZ6Xbv9G-6gn_7LWJ_m86p2i78nI2S3MhVA4",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"productId\": \"gmail\",\n\"averageReviewScore\": 9.5,\n\"numberOfReviews\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/auth/review",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"auth",
+						"review"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReview",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWp1IiwiZXhwIjoxNjg0MTE3NjE3LCJpYXQiOjE2ODQwODE2MTd9.BpmAd09mZ6Xbv9G-6gn_7LWJ_m86p2i78nI2S3MhVA4",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"productId\": \"gmail\",\n\"averageReviewScore\": 9.1,\n\"numberOfReviews\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/auth/review",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"auth",
+						"review"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteReview",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWp1IiwiZXhwIjoxNjg0MTE3NjE3LCJpYXQiOjE2ODQwODE2MTd9.BpmAd09mZ6Xbv9G-6gn_7LWJ_m86p2i78nI2S3MhVA4",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8090/auth/review?productId=gmail",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"auth",
+						"review"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "gmail"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/product/B42000",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"B42000"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
