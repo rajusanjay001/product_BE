@@ -14,8 +14,6 @@ docker-compose -f review-compose.yml up
 docker-compose -f product-compose.yml up
 
 
-Product and related microservice
-
  1)The docker image for the product service can be found here :https://hub.docker.com/r/rajusanjay001/product_microservice
 
   Product service runs on port **8080**
