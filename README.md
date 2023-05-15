@@ -1,6 +1,6 @@
 # Product and Review service
 
-** to convert the project to gradel ,go to location in project which contains pom.xml and run gradle init **
+# To convert the project to gradel ,go to location in project which contains pom.xml and run gradle init 
 
 1)Product and related microservice
 
