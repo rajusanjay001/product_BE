@@ -13,5 +13,5 @@ Product service runs on port 8090
 
 For the authente api to get the jwt token  use the below credentials
 
-username : raju
+username : raju ,
 password : password 
