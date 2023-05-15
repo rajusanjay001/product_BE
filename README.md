@@ -9,7 +9,7 @@
 
   Product service runs on port **8080**
 
-2) The docker image for the review service can be found here : https://hub.docker.com/r/rajusanjay001/review_microservice
+2)The docker image for the review service can be found here : https://hub.docker.com/r/rajusanjay001/review_microservice
 
   Product service runs on port **8090**
   
