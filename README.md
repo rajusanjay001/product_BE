@@ -3,9 +3,9 @@
 # To convert the project to gradel ,go to location in project which contains pom.xml and run gradle init 
 
 
-1)Product and related microservice
+Product and related microservice
 
-  The docker image for the product service can be found here :https://hub.docker.com/r/rajusanjay001/product_microservice
+ 1)The docker image for the product service can be found here :https://hub.docker.com/r/rajusanjay001/product_microservice
 
   Product service runs on port **8080**
 
