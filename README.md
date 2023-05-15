@@ -30,3 +30,14 @@ Product and related microservice
   **product.detail.url**
   
   product.detail.url=https://www.adidas.co.uk/api/products
+
+
+**Docker files are present in the docker folder**
+
+1)For Review services
+
+docker-compose -f review-compose.yml up
+
+2)For Product Services
+
+docker-compose -f product-compose.yml up
