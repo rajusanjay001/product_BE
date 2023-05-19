@@ -24,7 +24,7 @@ docker-compose -f product-compose.yml up
   
  **I have used in memory H2 for database and added scripts in data.sql for prepopulating the reviews for few of the products  and added 2 users for authentication using @PostConstruct since it is a POC** 
 
-  For the authente api to get the jwt token  use the below credentials
+  For the authented api flow ,to get the jwt token  use the below credentials
 
 {"userName": "raju",
 "password": "password"}
