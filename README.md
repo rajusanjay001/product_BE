@@ -12,7 +12,7 @@ This Project will demostrate the use of the follwing.
 5) REST.
 6) Auth and Unauth API.
 7) Docker.
-8) How to load the data during the start of the application using post construct and using data.xml file.
+8) How to load the data during the start of the application using post construct and using data.sql file.
 9) logger.
 10) Exception handling.
 11) Request timeout.
