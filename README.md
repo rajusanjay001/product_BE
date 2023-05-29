@@ -3,6 +3,18 @@
 # To convert the project to gradel ,go to location in project which contains pom.xml and run gradle init 
 
 
+This Project will demosstrate the use of the follwing.
+
+1) JWT .
+2) Spring Boot in memory H2 DB.
+3) Rest template example for external API and internal microservice.
+4) JPA.
+5) REST.
+6) Auth and Unauth API.
+7) Docker.
+8) How to load the data during the start of the application using post construct and using data.xml file.
+
+
 **Docker files are present in the docker folder**
 
 1)For Review services
