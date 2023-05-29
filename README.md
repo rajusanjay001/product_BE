@@ -15,7 +15,7 @@ This Project will demostrate the use of the follwing.
 8) How to load the data during the start of the application using post construct and using data.xml file.
 9) logger.
 10) Exception handling.
-11) REquest timeout.
+11) Request timeout.
 
 
 **Docker files are present in the docker folder**
