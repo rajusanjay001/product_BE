@@ -3,7 +3,7 @@
 # To convert the project to gradel ,go to location in project which contains pom.xml and run gradle init 
 
 
-This Project will demostrate the use of the follwing.
+This Project will demonstrate the use of the follwing.
 
 1) JWT .
 2) Spring Boot in memory H2 DB.
